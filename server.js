@@ -11,8 +11,7 @@ const adminRoutes = require("./routes/adminRoutes");
 const reviewsRoute = require("./routes/reviewsRoutes");
 const formRoutes = require("./routes/formRoutes");
 
-const PORT = 5000;
-
+const PORT = process.env.PORT;
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI
