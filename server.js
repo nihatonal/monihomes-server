@@ -14,7 +14,8 @@ const formRoutes = require("./routes/formRoutes");
 const PORT = process.env.PORT;
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI
+const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
+const PROJECT_URL = process.env.PROJECT_URL;
 const scope = 'https://www.googleapis.com/auth/calendar';
 const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&access_type=offline`;
 
