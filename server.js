@@ -19,7 +19,7 @@ const scope = 'https://www.googleapis.com/auth/calendar';
 const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&access_type=offline`;
 
 
-const allowedOrigins = ['http://localhost:3000', "https://67f1350a3935447d1cbefbba--monihomes.netlify.app"];  // Allow only your frontend URL
+const allowedOrigins = ['http://localhost:3000', PROJECT_URL];  // Allow only your frontend URL
 
 
 
