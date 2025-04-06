@@ -10,6 +10,7 @@ const reservationRoutes = require("./routes/reservationRoutes.js");
 const adminRoutes = require("./routes/adminRoutes");
 const reviewsRoute = require("./routes/reviewsRoutes");
 const formRoutes = require("./routes/formRoutes");
+const priceRoutes = require("./controllers/priceController");
 
 const PORT = process.env.PORT;
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
@@ -27,7 +28,7 @@ const allowedOrigins = ['http://localhost:3000', PROJECT_URL];  // Allow only yo
 
 app.use(cors({
     origin: allowedOrigins,  // Only allow requests from the allowed origins
-    methods: ['GET', 'POST'],  // You can add other HTTP methods if needed
+    methods: ['GET', 'POST','DELETE','PUT'],  // You can add other HTTP methods if needed
 }));
 
 app.use(express.json());
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", reservationRoutes);
 app.use("/api", reviewsRoute);
 app.use("/api", formRoutes);
+app.use("/api", priceRoutes);
 app.use("/api/admin", adminRoutes);
 app.get('/api/login', (req, res) => {
     // Redirect the user to the Google authorization page
@@ -105,38 +107,37 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB Connected')).catch(err => console.log(err));
 
 
-// Price Modeli
-const priceSchema = new mongoose.Schema({
-    price: []
-});
-const Price = mongoose.model('Price', priceSchema);
+// // Price Modeli
+// const priceSchema = new mongoose.Schema({
+//     price: []
+// });
+// const Price = mongoose.model('Price', priceSchema);
 
-//Fiyat guncelleme
-app.post('/api/admin/setprice', async (req, res) => {
-    const { price } = req.body;
+// //Fiyat guncelleme
+// app.post('/api/admin/setprice', async (req, res) => {
+//     const { price } = req.body;
 
-    if (!price) return
+//     if (!price) return
 
-    let new_price;
+//     let new_price;
 
-    try {
-        new_price = await Price.findById(process.env.PRICE_ID);
-    } catch (err) {
-        res.status(500).json({ message: 'Kayıt bulunamdı', error: err });
-    }
+//     try {
+//         new_price = await Price.findById(process.env.PRICE_ID);
+//     } catch (err) {
+//         res.status(500).json({ message: 'Kayıt bulunamdı', error: err });
+//     }
 
-    new_price.price = price;
+//     new_price.price = price;
 
-    try {
-        await new_price.save();
-    } catch (err) {
-        res.status(500).json({ message: 'Kayıt başarısız', error: err });
-    }
+//     try {
+//         await new_price.save();
+//     } catch (err) {
+//         res.status(500).json({ message: 'Kayıt başarısız', error: err });
+//     }
 
-    res.status(200).json({ price });
+//     res.status(200).json({ price });
 
-});
-
+// });
 
 
 app.listen(PORT, () => {

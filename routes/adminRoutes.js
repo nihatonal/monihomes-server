@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post("/register", adminControllers.adminRegister);
 router.post("/login", adminControllers.adminLogin);
-router.post('/protected', verifyToken, adminControllers.getProtectedAdminData);
+router.get('/protected', verifyToken, adminControllers.getProtectedAdminData);
 
 module.exports = router;
