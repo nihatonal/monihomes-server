@@ -17,8 +17,8 @@ const sendReservationEmail = async (reservationDetails) => {
     // E-posta içeriği
     const mailOptions = {
         from: process.env.GMAIL_USER,
-        to: "onalnihat@outlook.com",
-        //to: process.env.ADMIN_EMAIL, // Otel sahibinin e-posta adresi
+        //to: "onalnihat@outlook.com",
+        to: process.env.ADMIN_EMAIL, // Otel sahibinin e-posta adresi
         subject: 'Yeni Rezervasyon Talebi',
         html: `
             <h2>Yeni Rezervasyon Talebi</h2>
