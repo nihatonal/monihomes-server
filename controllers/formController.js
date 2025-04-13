@@ -5,8 +5,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.GMAIL_USER, // Gmail kullanıcı adı
-        pass: process.env.GMAIL_PASS, // Gmail şifresi (App password kullanabilirsiniz)
+        user: process.env.ADMIN_EMAIL, // Gmail kullanıcı adı
+        pass: process.env.ADMIN_PASS, // Gmail şifresi (App password kullanabilirsiniz)
     },
 });
 
@@ -16,8 +16,8 @@ const sendForm = async (req, res) => {
     try {
         // E-posta gönder
         const mailOptions = {
-            from: process.env.GMAIL_USER,
-            to: "onalnihat@outlook.com",
+            from: email,
+            to: process.env.ADMIN_EMAIL,
             //to: process.env.ADMIN_EMAIL, // Otel sahibinin e-posta adresi
             subject: 'Monihomes Sayfasından email aldınız',
             html: `

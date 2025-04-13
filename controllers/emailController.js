@@ -5,8 +5,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.GMAIL_USER, // Gmail kullanıcı adı
-        pass: process.env.GMAIL_PASS, // Gmail şifresi (App password kullanabilirsiniz)
+        user: process.env.ADMIN_EMAIL, // Gmail kullanıcı adı
+        pass: process.env.ADMIN_PASS, // Gmail şifresi (App password kullanabilirsiniz)
     },
 });
 
@@ -16,7 +16,7 @@ const sendReservationEmail = async (reservationDetails) => {
     console.log(reservationDetails)
     // E-posta içeriği
     const mailOptions = {
-        from: process.env.GMAIL_USER,
+        from: email,
         //to: "onalnihat@outlook.com",
         to: process.env.ADMIN_EMAIL, // Otel sahibinin e-posta adresi
         subject: 'Yeni Rezervasyon Talebi',

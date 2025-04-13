@@ -21,14 +21,14 @@ const scope = 'https://www.googleapis.com/auth/calendar';
 const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&access_type=offline`;
 
 
-const allowedOrigins = ['http://localhost:3000', PROJECT_URL];  // Allow only your frontend URL
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', PROJECT_URL];  // Allow only your frontend URL
 
 
 
 
 app.use(cors({
     origin: allowedOrigins,  // Only allow requests from the allowed origins
-    methods: ['GET', 'POST','DELETE','PUT'],  // You can add other HTTP methods if needed
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],  // You can add other HTTP methods if needed
 }));
 
 app.use(express.json());
