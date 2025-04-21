@@ -11,7 +11,7 @@ const adminRoutes = require("./routes/adminRoutes");
 const reviewsRoute = require("./routes/reviewsRoutes");
 const formRoutes = require("./routes/formRoutes");
 const priceRoutes = require("./controllers/priceController");
-
+const analyticsRoute = require('./routes/analyticsRoute')
 const PORT = process.env.PORT;
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -38,6 +38,7 @@ app.use("/api", reservationRoutes);
 app.use("/api", reviewsRoute);
 app.use("/api", formRoutes);
 app.use("/api", priceRoutes);
+app.use("/api", analyticsRoute);
 app.use("/api/admin", adminRoutes);
 app.get('/api/login', (req, res) => {
     // Redirect the user to the Google authorization page
