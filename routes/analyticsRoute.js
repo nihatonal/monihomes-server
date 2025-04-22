@@ -6,11 +6,12 @@ const { BetaAnalyticsDataClient } = require('@google-analytics/data');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "/etc/secrets/GA_KEY.json",
-   // keyFile: path.join(__dirname, '../config/GA_KEY.json'), // Anahtar dosyası konumu
+    //keyFile: path.join(__dirname, '../config/GA_KEY.json'), // Anahtar dosyası konumu
     scopes: ['https://www.googleapis.com/auth/analytics.readonly'],
 });
 const analyticsDataClient = new BetaAnalyticsDataClient({
-    keyFile: path.join(__dirname, '../config/GA_KEY.json'),
+    //keyFile: path.join(__dirname, '../config/GA_KEY.json'),
+    keyFile: "/etc/secrets/GA_KEY.json",
 });
 router.get('/analytics-data', async (req, res) => {
     try {
